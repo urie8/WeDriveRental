@@ -9,6 +9,10 @@ namespace WeDriveRental.Domain
     public class BookingModel
     {
         public int Id { get; set; }
-     
+
+        public DateTime Date { get; set; }
+        public bool IsCancelled { get; set; }
+        public int CarId { get; set; }
+        public CarModel Car { get; set; }
     }
 }
