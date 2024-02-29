@@ -19,14 +19,14 @@ namespace WeDriveRental.Data
                 Id = 1,
                 Brand = "Mercedes",
                 Model = "Mercedes-Benz C-Class",
-                SekPrice = 349800
+                SekPrice = 1000
             },
             new CarModel()
             {
                 Id = 2,
                 Brand = "Audi",
                 Model = "Audi RS6",
-
+                SekPrice = 1500
             },
 
             new CarModel()
@@ -34,7 +34,7 @@ namespace WeDriveRental.Data
                 Id = 3,
                 Brand = "Audi",
                 Model = "Audi RSQ8",
-
+                SekPrice = 2000
             },
 
             new CarModel()
@@ -42,13 +42,14 @@ namespace WeDriveRental.Data
                 Id = 4,
                 Brand = "Koenigsegg",
                 Model = "koenigsegg Agera",
-
+                SekPrice = 3000
             },
             new CarModel()
             {
                 Id = 5,
                 Brand = "Mercedes",
                 Model = "Mercedes G63 AMG",
+                SekPrice = 2500
             }
             );
 
