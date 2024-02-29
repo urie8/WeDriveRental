@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using WeDriveRental.Client.Pages;
 using WeDriveRental.Components;
 using WeDriveRental.Components.Account;
 using WeDriveRental.Data;
@@ -36,12 +35,55 @@ builder.Services.AddIdentityCore<ApplicationUser>(options =>
     options.Lockout.MaxFailedAccessAttempts = 5;
 
 })
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddSignInManager()
     .AddDefaultTokenProviders();
-    //.AddRoles<IdentityRole>();
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+
+// Skapa users och roller som ska finnas med från start
+using (ServiceProvider sp = builder.Services.BuildServiceProvider())
+{
+    var context = sp.GetRequiredService<ApplicationDbContext>();
+    var signInManager = sp.GetRequiredService<SignInManager<ApplicationUser>>();
+    var roleManager = sp.GetRequiredService<RoleManager<IdentityRole>>();
+
+    context.Database.Migrate();
+
+    ApplicationUser newUser = new()
+    {
+        UserName = "adminuser@mail.com",
+        Email = "adminuser@mail.com",
+        EmailConfirmed = true
+    };
+
+    var user = signInManager.UserManager.FindByEmailAsync(newUser.Email).GetAwaiter().GetResult();
+
+    if (user == null)
+    {
+        // Skapa en ny user
+        signInManager.UserManager.CreateAsync(newUser, "Password1234!").GetAwaiter().GetResult();
+
+        // Kolla om admin rollen existerar
+        bool adminRoleExists = roleManager.RoleExistsAsync("Admin").GetAwaiter().GetResult();
+
+        if (!adminRoleExists)
+        {
+            IdentityRole adminRole = new()
+            {
+                Name = "Admin",
+
+            };
+
+            // Skapa adminrollen
+            roleManager.CreateAsync(adminRole).GetAwaiter().GetResult();
+
+            // Tilldela adminrollen till den nya användaren
+            signInManager.UserManager.AddToRoleAsync(newUser, "Admin").GetAwaiter().GetResult();
+        }
+    }
+}
 
 var app = builder.Build();
 

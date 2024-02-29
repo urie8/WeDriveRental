@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeDriveRental", "WeDriveRental\WeDriveRental\WeDriveRental.csproj", "{2427C78D-6D0F-4477-92C3-893221014DDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeDriveRental", "WeDriveRental\WeDriveRental\WeDriveRental.csproj", "{2427C78D-6D0F-4477-92C3-893221014DDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeDriveRental.Client", "WeDriveRental\WeDriveRental.Client\WeDriveRental.Client.csproj", "{E0F56187-95C3-4835-AAF0-A3FB0CDD4520}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeDriveRental.Client", "WeDriveRental\WeDriveRental.Client\WeDriveRental.Client.csproj", "{E0F56187-95C3-4835-AAF0-A3FB0CDD4520}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeDriveRental.Domain", "WeDriveRental.Domain\WeDriveRental.Domain.csproj", "{53D7DE3F-F912-4FD6-B1BB-3C7A0FBD783E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeDriveRental.Domain", "WeDriveRental.Domain\WeDriveRental.Domain.csproj", "{53D7DE3F-F912-4FD6-B1BB-3C7A0FBD783E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
